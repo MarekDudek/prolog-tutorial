@@ -1,0 +1,15 @@
+Prolog tutorial
+
+Running SWI Prolog
+
+	swipl
+
+Loading rules from file
+
+	[likes].
+
+Running query
+
+	likes(john, mary).
+	
+	(returns true)
