@@ -1,15 +1,26 @@
 Prolog tutorial
 
-Running SWI Prolog
+	Running SWI Prolog
 
-	swipl
+		swipl
 
-Loading rules from file
+	Loading rules from file
 
-	[likes].
+		consult('likes').
+	or
+		[likes].
 
-Running query
+	Running query
 
-	likes(john, mary).
-	
-	(returns true)
+		likes(john, mary).  	// returns true
+		likes(X, Y).		// returns pairs after colon or space
+
+	Consulting startup file
+
+		~/.plrc
+	or 
+		swipl -f [some-path]
+
+	Loading library
+
+		use_module(library(lists)).
