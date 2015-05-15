@@ -36,3 +36,7 @@ Prolog tutorial
 			run_tests.
 
 	PrologScript
+
+	Compilation to standalone executable
+		
+		not yet successfull - worked with test but not with program
