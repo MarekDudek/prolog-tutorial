@@ -34,3 +34,5 @@ Prolog tutorial
 		run REPL, consult file with tests, then
 		
 			run_tests.
+
+	PrologScript
