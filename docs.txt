@@ -24,3 +24,13 @@ Prolog tutorial
 	Loading library
 
 		use_module(library(lists)).
+
+	works in REPL
+
+	TDD is possible
+		
+		PLUnit framework
+
+		run REPL, consult file with tests, then
+		
+			run_test.
