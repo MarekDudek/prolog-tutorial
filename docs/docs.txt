@@ -39,4 +39,4 @@ Prolog tutorial
 
 	Compilation to standalone executable
 		
-		not yet successfull - worked with test but not with program
+		order of options and arguments matters!
