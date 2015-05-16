@@ -8,12 +8,13 @@ rm -fr ./out/*
 #	-c ./src/standalone.pro
 
 # Hello World program
-swipl --goal=main --toplevel=halt --stand_alone=true -o ./out/hello-world -c ./src/hello-world.pro
+swipl --goal=main --toplevel=halt --stand_alone=true --quiet -o ./out/hello-world -c ./src/hello-world.pro
 
 # Unit tests
 swipl --goal=run_tests \
 	--toplevel=halt \
 	--stand_alone=true \
+	--quiet \
 	-o ./out/tests \
 	-c ./src/tests.pl
 
