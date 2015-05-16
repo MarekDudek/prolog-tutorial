@@ -10,6 +10,9 @@ rm -fr ./out/*
 # Hello World program
 swipl --goal=main --toplevel=halt --stand_alone=true --quiet -o ./out/hello-world -c ./src/hello-world.pro
 
+# Standalone program with command line arguments
+swipl --goal=go --toplevel=halt --stand_alone=true --quiet -o ./out/standalone -c ./src/standalone.pro
+
 # Unit tests
 swipl --goal=run_tests \
 	--toplevel=halt \
