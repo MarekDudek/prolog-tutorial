@@ -3,5 +3,4 @@
 THIS_FILE=$(readlink -f $0)
 THIS_DIR=`dirname ${THIS_FILE}`
 
-${THIS_DIR}/myapp/load_test.sh
-${THIS_DIR}/liking/load_test.sh
+swipl -s ${THIS_DIR}/likings_tests.pl -g run_tests -t halt --quiet

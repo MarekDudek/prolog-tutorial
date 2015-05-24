@@ -1,4 +1,7 @@
-:- begin_tests(likings).
+:- module(likings_tests,[]).
+
+:- begin_tests(likings_tests).
+
 :- use_module(likings).
 
 
@@ -73,4 +76,4 @@ test(division_by_zero_variant) :-
 	E =@= evaluation_error(zero_divisor).
 
 
-:- end_tests(likings).
+:- end_tests(likings_tests).

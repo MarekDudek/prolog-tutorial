@@ -1,2 +1,3 @@
 
 :- [myapp/load].
+:- [liking/load].
