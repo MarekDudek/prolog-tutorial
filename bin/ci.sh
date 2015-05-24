@@ -3,7 +3,10 @@
 THIS_FILE=$(readlink -f $0)
 THIS_DIR=`dirname ${THIS_FILE}`
 
-rm -f ./out/standalone
-${THIS_DIR}/../src/application/build-standalone.sh
+SOURCE_DIR=${THIS_DIR}/../src
 
-${THIS_DIR}/load_test.sh
+${SOURCE_DIR}/load_test.sh
+
+rm -f ./out/standalone
+${SOURCE_DIR}/application/build-standalone.sh
+
