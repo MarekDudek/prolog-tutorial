@@ -13,11 +13,3 @@ swipl --goal=main --toplevel=halt --stand_alone=true --quiet -o ./out/hello-worl
 # Standalone program with command line arguments
 swipl --goal=go --toplevel=halt --stand_alone=true --quiet -o ./out/standalone -c ./src/standalone.pro
 
-# Unit tests
-swipl --goal=run_tests \
-	--toplevel=halt \
-	--stand_alone=true \
-	--quiet \
-	-o ./out/tests \
-	-c ./src/tests.pl
-

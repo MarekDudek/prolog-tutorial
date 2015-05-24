@@ -5,7 +5,6 @@ SCRIPT=$(readlink -f $0)
 SCRIPT_PATH=`dirname ${SCRIPT}`
 
 $SCRIPT_PATH/compile-standalone.sh
-$SCRIPT_PATH/run-test.sh
 
 
 THIS_FILE=$(readlink -f $0)
