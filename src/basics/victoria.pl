@@ -19,4 +19,5 @@ parents(alice, victoria, albert).
 sister_of(X, Y) :-
 	female(X),
 	parents(X, M, F),
-	parents(Y, M, F).
+	parents(Y, M, F),
+	X \= Y.
