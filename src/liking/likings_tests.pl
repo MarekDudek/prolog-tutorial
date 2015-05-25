@@ -56,7 +56,7 @@ test(intentionally_broken, fixme(just_to_check_fixme)) :-
 /* Conditional tests */
 
 test(with_failing_condition, condition(fail)) :-
-	format('!!! this should be executed !!!~n'),
+	format('!!! this should not be executed !!!~n'),
 	fail.
 
 test(with_fulfilled_condition, condition(true)) :-
