@@ -3,16 +3,21 @@
 /* Already defined */
 
 father(wiktor, dionizy).
-
 father(dionizy, rafal).
 father(krzysztof, marek).
-
 father(rafal, rafals_daughter).
 
-mother(daniela, krzysztof).
+father(antoni, karol).
+father(antoni, henryk).
+father(antoni, lucja).
 
+mother(daniela, krzysztof).
 mother(teresa, rafal).
 mother(lucja, marek).
+
+mother(stefania, karol).
+mother(stefania, henryk).
+mother(stefania, lucja).
 
 male(wiktor).
 male(dionizy).
@@ -23,7 +28,6 @@ male(marek).
 female(daniela).
 female(teresa).
 female(lucja).
-
 
 parent(X, Y) :-
 	father(X, Y) ; mother(X, Y).
@@ -42,6 +46,12 @@ is_father(X) :-
 is_son(X) :-
 	(mother(_, X) ; father(_, X)),
 	male(X).
+	
+sister_of(X, Y) :-
+	mother(M, X),
+	mother(M, Y),
+	father(F, X),
+	father(F, Y).
 
 /* Tests */
 
@@ -86,6 +96,10 @@ test('son', nondet) :-
 
 test('son', fail) :-
 	is_son(rafals_daughter).
+	
+test('sister') :-
+	sister_of(lucja, karol),
+	sister_of(lucja, henryk).
 	
 :- end_tests('family').
 
