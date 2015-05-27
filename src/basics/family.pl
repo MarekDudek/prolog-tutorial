@@ -60,6 +60,13 @@ grandpa_of(Grandpa, Grandson) :-
 	(father(Grandpa, Father) , father(Father, Grandson));
 	(father(Grandpa, Mother) , mother(Mother, Grandson)).
 
+sibling(S1, S2) :-
+	mother(Mother, S1),
+	father(Father, S1),
+	mother(Mother, S2),
+	father(Father, S2),
+	diff(S1, S2).
+
 /* Tests */
 
 :- begin_tests('family').
@@ -124,7 +131,12 @@ test('grandpa', nondet) :-
 test('grandpa', fail) :-
 	grandpa_of(wiktor, marek).
 
-	
+test('sibling') :-
+	sibling(lucja, karol).
+
+test('sibling', fail) :-
+	sibling(lucja, lucja).
+
 :- end_tests('family').
 
 
