@@ -54,25 +54,22 @@ is_son(Son) :-
 	parent(_Parent, Son),
 	male(Son).
 
-sister_of(X, Y) :-
-	female(X),
-	mother(M, X),
-	father(F, X),
-	mother(M, Y),
-	father(F, Y),
-	diff(X, Y).
+sister_of(Sister, Sibling) :-
+	parent(Parent, Sister),
+	parent(Parent, Sibling),
+	female(Sister),
+	diff(Sister, Sibling).
 
-grandpa_of(Grandpa, Grandson) :-
-	male(Grandpa),
-	(father(Grandpa, Father) , father(Father, Grandson));
-	(father(Grandpa, Mother) , mother(Mother, Grandson)).
-
-sibling(S1, S2) :-
-	mother(Mother, S1),
-	father(Father, S1),
-	mother(Mother, S2),
-	father(Father, S2),
-	diff(S1, S2).
+grandpa_of(Gpa, Gson) :-
+	father(Gpa, Parent),
+	parent(Parent, Gson).
+	
+sibling(Sibling1, Sibling2) :-
+	mother(Mother, Sibling1),
+	father(Father, Sibling1),
+	mother(Mother, Sibling2),
+	father(Father, Sibling2),
+	diff(Sibling1, Sibling2).
 	
 aunt(Aunt, X) :-
 	female(Aunt),
@@ -131,7 +128,7 @@ test('son', nondet) :-
 test('son', fail) :-
 	is_son(rafals_daughter).
 
-test('sister') :-
+test('sister', nondet) :-
 	sister_of(lucja, karol),
 	sister_of(lucja, henryk).
 	
