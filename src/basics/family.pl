@@ -11,6 +11,9 @@ father(antoni, karol).
 father(antoni, henryk).
 father(antoni, lucja).
 
+father(henryk, marcin).
+father(henryk, andrzej).
+
 mother(daniela, krzysztof).
 mother(teresa, rafal).
 mother(lucja, marek).
@@ -25,27 +28,31 @@ male(krzysztof).
 male(rafal).
 male(marek).
 
+male(antoni).
+male(karol).
+male(henryk).
+
 female(daniela).
 female(teresa).
 female(lucja).
 
-parent(X, Y) :-
-	father(X, Y) ; mother(X, Y).
+parent(Parent, Child) :-
+	father(Parent, Child) ; mother(Parent, Child).
 
 diff(X, Y) :-
 	X \= Y.
 
 /* To be defined */
 
-is_mother(X) :-
-	mother(X, _).
+is_mother(Mother) :-
+	mother(Mother, _Child).
 
-is_father(X) :-
-	father(X, _).
+is_father(Father) :-
+	father(Father, _Child).
 
-is_son(X) :-
-	(mother(_, X) ; father(_, X)),
-	male(X).
+is_son(Son) :-
+	parent(_Parent, Son),
+	male(Son).
 
 sister_of(X, Y) :-
 	female(X),
@@ -66,6 +73,16 @@ sibling(S1, S2) :-
 	mother(Mother, S2),
 	father(Father, S2),
 	diff(S1, S2).
+	
+aunt(Aunt, X) :-
+	female(Aunt),
+	sibling(Aunt, Parent),
+	parent(Parent, X).
+
+uncle(Uncle, X) :-
+	male(Uncle),
+	sibling(Uncle, Parent),
+	parent(Parent, X).
 
 /* Tests */
 
@@ -136,6 +153,12 @@ test('sibling') :-
 
 test('sibling', fail) :-
 	sibling(lucja, lucja).
+	
+test('aunt', nondet) :-
+	aunt(lucja, marcin).
+
+test('uncle') :-
+	uncle(karol, marek).
 
 :- end_tests('family').
 
