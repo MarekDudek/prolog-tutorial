@@ -27,8 +27,21 @@ test('matching variables in structure') :-
 test('operators do not carry out math', fail) :-
 	3 + 4 == 7.
 	
-test('carry out math') :-
+test('"is" operator to carry out math') :-
 	7 is 3 + 4.
 
+test('expression to evaluate has to be on the right side', fail) :-
+	3 + 4 is 7.
+	
+test('comparisons') :-
+	3 =:= 3,
+	3 =:= (2+1),
+	3 =\= 4,
+	3 < 4,
+	4 > 3,
+	3 =< 3,
+	3 >= 3.
+
+test('') :- true.
 
 :- end_tests('closer look').
