@@ -65,10 +65,8 @@ grandpa_of(Gpa, Gson) :-
 	parent(Parent, Gson).
 	
 sibling(Sibling1, Sibling2) :-
-	mother(Mother, Sibling1),
-	father(Father, Sibling1),
-	mother(Mother, Sibling2),
-	father(Father, Sibling2),
+	parent(Parent, Sibling1),
+	parent(Parent, Sibling2),
 	diff(Sibling1, Sibling2).
 	
 aunt(Aunt, X) :-
@@ -145,7 +143,7 @@ test('grandpa', nondet) :-
 test('grandpa', fail) :-
 	grandpa_of(wiktor, marek).
 
-test('sibling') :-
+test('sibling', nondet) :-
 	sibling(lucja, karol).
 
 test('sibling', fail) :-
@@ -154,7 +152,7 @@ test('sibling', fail) :-
 test('aunt', nondet) :-
 	aunt(lucja, marcin).
 
-test('uncle') :-
+test('uncle', nondet) :-
 	uncle(karol, marek).
 
 :- end_tests('family').
