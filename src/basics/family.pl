@@ -48,18 +48,19 @@ is_son(X) :-
 	male(X).
 	
 sister_of(X, Y) :-
+	female(X),
 	mother(M, X),
-	mother(M, Y),
 	father(F, X),
-	father(F, Y).
+	mother(M, Y),
+	father(F, Y),
+	diff(X, Y).
 
 /* Tests */
 
 :- begin_tests('family').
 
-test('my father') :-
-	parent(krzysztof, marek),
-	!.
+test('my father', nondet) :-
+	parent(krzysztof, marek).
 
 test('my mother') :-
 	parent(lucja, marek).
@@ -76,7 +77,9 @@ test('mother', nondet) :-
 	is_mother(teresa).
 	
 test('mother', fail) :-
-	is_mother(krzysztof),
+	is_mother(krzysztof).
+
+test('mother', fail) :-
 	is_mother(marek).
 	
 test('father', nondet) :-
@@ -85,8 +88,10 @@ test('father', nondet) :-
 	is_father(krzysztof).
 	
 test('father', fail) :-
-	is_father(lucja),
-	is_father(marek).
+	is_father(lucja).
+
+test('father', fail) :-
+	is_father(marek).	
 	
 test('son', nondet) :-
 	is_son(dionizy),
@@ -100,6 +105,12 @@ test('son', fail) :-
 test('sister') :-
 	sister_of(lucja, karol),
 	sister_of(lucja, henryk).
+	
+test('sister', fail) :-
+	sister_of(karol, lucja).
+	
+test('sister', fail) :-
+	sister_of(lucja, lucja).
 	
 :- end_tests('family').
 
