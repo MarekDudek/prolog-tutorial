@@ -5,6 +5,12 @@
 book(moby_dick, author(herman, melville)).
 
 
+member(E, [E|_]).
+member(E, [_|T]) :- member(E, T).
+
+islist([_H|T]) :- islist(T).
+islist([]).
+
 /*
  * Tests
  */
@@ -43,5 +49,19 @@ test('strange case - structure that resembles list but does not end with empty l
 	assertion(P == white),
 	assertion(Q == horse).
 
+test('member test 1', nondet) :-
+	member(a, [a, b, c, d, e]).
 
+test('member test 2', nondet) :-
+	member(e, [a, b, c, d, e]).
+
+test('checking if list') :-
+	islist([a, b, c, d, e]).
+	
+test('checking if list, endless loop', error(resource_error(stack),local)) :- 
+	islist(_X).
+	
+test('strage structure isn"t really list', fail) :-
+	islist([white|horse]).
+	
 :- end_tests('data structures').
