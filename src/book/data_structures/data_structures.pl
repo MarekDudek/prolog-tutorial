@@ -61,7 +61,9 @@ test('member test 2', nondet) :-
 test('checking if list') :-
 	islist([a, b, c, d, e]).
 	
-test('checking if list, endless loop', error(resource_error(stack),local)) :- 
+test('checking if list, endless loop', 
+	[error(resource_error(stack),local), blocked(takes_too_long)]
+	) :- 
 	islist(_X).
 	
 test('strage structure isn"t really list', fail) :-
