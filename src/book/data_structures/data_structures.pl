@@ -11,6 +11,9 @@ member(E, [_|T]) :- member(E, T).
 islist([_H|T]) :- islist(T).
 islist([]).
 
+weak_islist([]).
+weak_islist([_|_]).
+
 /*
  * Tests
  */
@@ -63,5 +66,12 @@ test('checking if list, endless loop', error(resource_error(stack),local)) :-
 	
 test('strage structure isn"t really list', fail) :-
 	islist([white|horse]).
+
+test('weak checking if list') :-
+	weak_islist([a, b, c, d, e]).
+
+test('weak check won"t detect strange structure') :-
+	weak_islist([white|horse]).
+	
 	
 :- end_tests('data structures').
