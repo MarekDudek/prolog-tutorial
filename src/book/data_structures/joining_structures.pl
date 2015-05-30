@@ -18,26 +18,27 @@ assembly(hub, [gears, axle]).
 assembly(axle, [bolt, nut]).
 
 
-partsof(Part, [Part]) :-
-	basicpart(Part).
-partsof(Part, BasicParts) :-
-	assembly(Part, Subparts),
-	partsoflist(Subparts, BasicParts).
+parts_of(BasicPart, [BasicPart]) :-
+	basicpart(BasicPart).
+parts_of(Assembly, BasicParts) :-
+	assembly(Assembly, SubParts),
+	parts_of_list(SubParts, BasicParts).
 	
-partsoflist([], []).
-partsoflist([H|T], Total) :-
-	partsof(H, HeadParts),
-	partsoflist(T, Tailparts),
-	append(HeadParts, Tailparts, Total).
+parts_of_list([], []).
+parts_of_list([H|T], BasicParts) :-
+	parts_of(H, HeadParts),
+	parts_of_list(T, TailParts),
+	append(HeadParts, TailParts, BasicParts).
+
 
 :- begin_tests('joining structures').
 
 test('parts of wheel', nondet) :- 
-	partsof(wheel, Parts),
+	parts_of(wheel, Parts),
 	assertion(Parts == [spoke, rim, gears, bolt, nut]).
 
 test('parts of bike', nondet) :- 
-	partsof(bike, Parts),
+	parts_of(bike, Parts),
 	assertion(Parts == 
 		[spoke, rim, gears, bolt, nut, 
 		 spoke, rim, gears, bolt, nut,
