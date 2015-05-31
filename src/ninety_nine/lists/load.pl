@@ -6,3 +6,4 @@
 :- use_module(palindrome).
 :- use_module(flatten_list).
 :- use_module(elim_cons_dups).
+:- use_module(pack_cons_dups).

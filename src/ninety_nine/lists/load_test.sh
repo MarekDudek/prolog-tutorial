@@ -11,3 +11,4 @@ swipl -s ${THIS_DIR}/reverse_list.pl       -g run_tests -t halt --quiet
 swipl -s ${THIS_DIR}/palindrome.pl         -g run_tests -t halt --quiet
 swipl -s ${THIS_DIR}/flatten_list.pl       -g run_tests -t halt --quiet
 swipl -s ${THIS_DIR}/elim_cons_dups.pl     -g run_tests -t halt --quiet
+swipl -s ${THIS_DIR}/pack_cons_dups.pl     -g run_tests -t halt --quiet
