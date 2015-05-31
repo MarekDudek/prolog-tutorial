@@ -47,6 +47,23 @@ parts_of_list_2([H|T], Acc, BasicParts) :-
 	parts_of_2(H, Acc, HeadParts),
 	parts_of_list_2(T, HeadParts, BasicParts).
 
+%% The same with difference lists
+
+parts_of_3(Composite, BasicParts) :-
+	parts_of_3(Composite, BasicParts, Hole),
+	Hole = [].
+	
+parts_of_3(BasicPart, [BasicPart|Hole], Hole) :-
+	basicpart(BasicPart).
+parts_of_3(Assembly, Parts, Hole) :-
+	assembly(Assembly, SubParts),
+	parts_of_list_3(SubParts, Parts, Hole).
+	
+parts_of_list_3([], Hole, Hole).
+parts_of_list_3([H|T], Total, Hole) :-
+	parts_of_3(H, Total, Hole1),
+	parts_of_list_3(T, Hole1, Hole).
+
 :- begin_tests('joining structures').
 
 test('parts of wheel', nondet) :- 
@@ -70,5 +87,16 @@ test('acc parts of bike', nondet) :-
 		[handles,fork,rearframe,
 		 nut,bolt,gears,rim,spoke,
 		 nut,bolt,gears,rim,spoke]).
+		 
+test('diff parts of wheel', nondet) :- 
+	parts_of_3(wheel, Parts),
+	assertion(Parts == [spoke, rim, gears, bolt, nut]).
+
+test('diff parts of bike', nondet) :- 
+	parts_of_3(bike, Parts),
+	assertion(Parts == 
+		[spoke, rim, gears, bolt, nut, 
+		 spoke, rim, gears, bolt, nut,
+		 rearframe, fork, handles]).		 
 
 :- end_tests('joining structures').
