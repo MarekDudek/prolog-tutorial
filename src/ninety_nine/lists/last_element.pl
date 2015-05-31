@@ -15,6 +15,9 @@ last_element(Elem, [_H|T]) :-
  */
 :- begin_tests('last element').
 
+test('Last element of empty list', fail) :-
+	last_element(y, []).
+	
 test('Last element of one-element list', nondet) :- 
   	last_element(E, [e]),
   	assertion(E == e).

@@ -4,7 +4,8 @@
 
 %% last_but_one(?Elem, ?List).
 %
-%
+%  True if Elem is second to last element of List.
+
 last_but_one(Elem, [Elem, _Last]).
 last_but_one(Elem, [_H|T]) :-
 	last_but_one(Elem, T).
@@ -14,16 +15,18 @@ last_but_one(Elem, [_H|T]) :-
  */
 :- begin_tests('last but one').
 
-test('last but one in empty list', fail) :-
+test('Last but one of empty list', fail) :-
 	last_but_one(y, []).
 
-test('last but one in single element list', fail) :-
+test('Last but one of single element list', fail) :-
 	last_but_one(y, [y]).
 	
-test('last but one in two-element list', nondet) :- 
-	last_but_one(y, [y, z]).
+test('Last but one of two-element list', nondet) :- 
+	last_but_one(E, [a, b]),
+	assertion(E == a).
 
-test('last but one in five-element list', nondet) :- 
-	last_but_one(d, [a, b, c, d, e]).
+test('Last but one of five-element list', nondet) :- 
+	last_but_one(E, [a, b, c, d, e]),
+	assertion(E == d).
 
 :- end_tests('last but one').
