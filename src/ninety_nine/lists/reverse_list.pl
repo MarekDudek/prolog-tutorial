@@ -1,4 +1,5 @@
-:- module(reverse_list,[		
+:- module(reverse_list,[
+	reverse_list/2	
 ]).
 
 %% reverse_list(?List, ?ReversedList).
