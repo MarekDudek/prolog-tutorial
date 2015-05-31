@@ -9,3 +9,4 @@ swipl -s ${THIS_DIR}/kth_element.pl        -g run_tests -t halt --quiet
 swipl -s ${THIS_DIR}/number_of_elements.pl -g run_tests -t halt --quiet
 swipl -s ${THIS_DIR}/reverse_list.pl       -g run_tests -t halt --quiet
 swipl -s ${THIS_DIR}/palindrome.pl         -g run_tests -t halt --quiet
+swipl -s ${THIS_DIR}/flatten_list.pl       -g run_tests -t halt --quiet

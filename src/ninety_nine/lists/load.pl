@@ -4,3 +4,4 @@
 :- use_module(number_of_elements).
 :- use_module(reverse_list).
 :- use_module(palindrome).
+:- use_module(flatten_list).
