@@ -16,6 +16,12 @@ element_at(Elem, [_H|T], K) :-
  */
 :- begin_tests('k-th element').
 
+test('1-st element of empty list', fail) :- 
+	element_at(_, [], 1).
+
+test('3-rd element of empty list', fail) :- 
+	element_at(_, [], 3).
+	
 test('1-st element of the list', nondet) :- 
 	element_at(E, [a, b, c], 1),
 	assertion(E == a).
