@@ -7,3 +7,4 @@ ${THIS_DIR}/myapp/load_test.sh
 ${THIS_DIR}/liking/load_test.sh
 ${THIS_DIR}/basics/load_test.sh
 ${THIS_DIR}/book/load_test.sh
+${THIS_DIR}/ninety_nine/load_test.sh

@@ -1,0 +1,2 @@
+
+:- [lists/load_test].
