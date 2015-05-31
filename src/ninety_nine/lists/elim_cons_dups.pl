@@ -1,4 +1,4 @@
-:- module(eliminate_consecutive_duplicates,[		
+:- module(elim_cons_dups,[		
 ]).
 
 

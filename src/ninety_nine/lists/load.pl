@@ -5,4 +5,4 @@
 :- use_module(reverse_list).
 :- use_module(palindrome).
 :- use_module(flatten_list).
-:- use_module(eliminate_consecutive_duplicates).
+:- use_module(elim_cons_dups).
